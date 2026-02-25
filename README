@@ -1,0 +1,225 @@
+📦 Gako Site – E-commerce em PHP
+
+Sistema de e-commerce desenvolvido em PHP + MySQL (PDO) com carrinho de compras em sessão, painel administrativo, upload de arquivos e integração com Mercado Pago (Sandbox).
+
+🚀 Tecnologias Utilizadas
+
+PHP 8+
+
+MySQL
+
+PDO (PHP Data Objects)
+
+HTML5
+
+CSS3
+
+XAMPP (ambiente local)
+
+Integração com API do Mercado Pago
+
+📂 Estrutura do Projeto
+gako-site/
+│
+├── admin/
+│   ├── login.php
+│   ├── dashboard.php
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── uploads/
+│
+├── pagamento/
+│   ├── retorno.php
+│
+├── config/
+│   ├── config.php
+│
+├── index.php
+└── README.md
+⚙️ Instalação Local (Passo a Passo)
+1️⃣ Instalar Ambiente
+
+Instale o XAMPP:
+
+https://www.apachefriends.org
+
+Inicie:
+
+✅ Apache
+
+✅ MySQL
+
+2️⃣ Criar Banco de Dados
+
+Acesse:
+
+http://localhost/phpmyadmin
+
+Crie o banco:
+
+gako_atividades
+
+Collation:
+
+utf8mb4_general_ci
+3️⃣ Criar Tabela produtos
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10,2) NOT NULL,
+    preco_promocional DECIMAL(10,2) DEFAULT 0.00,
+    imagem_capa VARCHAR(255),
+    ativo TINYINT(1) DEFAULT 1,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+4️⃣ Criar Tabela administradores
+CREATE TABLE administradores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+5️⃣ Configuração do Banco (config.php)
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'gako_atividades');
+🛒 Funcionalidades
+✔️ Sistema de Carrinho
+
+Adicionar produto
+
+Remover produto
+
+Atualizar quantidade
+
+Calcular total
+
+Contar itens
+
+O carrinho é armazenado em:
+
+$_SESSION['carrinho']
+✔️ Sistema de Upload
+
+Limite: 5MB
+
+Tipos permitidos:
+
+JPG
+
+PNG
+
+GIF
+
+PDF
+
+Diretório:
+
+/assets/uploads/
+✔️ Área Administrativa
+
+Login seguro com password_hash
+
+Sessão protegida
+
+CRUD de produtos
+
+✔️ Integração com Mercado Pago
+
+Modo padrão configurado:
+
+sandbox
+
+Configuração:
+
+define('MP_ACCESS_TOKEN', 'SEU_TOKEN');
+define('MP_PUBLIC_KEY', 'SUA_PUBLIC_KEY');
+🔐 Segurança Implementada
+
+PDO com prepared statements
+
+htmlspecialchars() contra XSS
+
+password_hash() para senhas
+
+Validação de upload
+
+Controle de sessão
+
+🌐 URLs do Projeto
+
+Se estiver rodando local:
+
+http://localhost/gako-site/
+
+Retornos do pagamento:
+
+Sucesso → /pagamento/retorno.php?status=sucesso
+
+Falha → /pagamento/retorno.php?status=falha
+
+Pendente → /pagamento/retorno.php?status=pendente
+
+📊 Estrutura do Banco
+📦 Tabela: produtos
+Campo	Tipo
+id	INT
+nome	VARCHAR
+slug	VARCHAR
+descricao	TEXT
+preco	DECIMAL
+preco_promocional	DECIMAL
+imagem_capa	VARCHAR
+ativo	BOOLEAN
+👤 Tabela: administradores
+Campo	Tipo
+id	INT
+nome	VARCHAR
+email	VARCHAR
+senha	VARCHAR
+🚀 Melhorias Futuras
+
+ Sistema de pedidos
+
+ Tabela de usuários
+
+ Histórico de compras
+
+ Dashboard com métricas
+
+ Controle de estoque
+
+ Webhook do Mercado Pago
+
+ Deploy em servidor VPS
+
+📈 Possível Evolução Arquitetural
+
+Separar em MVC
+
+Criar camada Repository
+
+Implementar Service Layer
+
+API REST
+
+Autenticação JWT
+
+Docker
+
+👨‍💻 Autor
+
+Guilherme Varjão Santos
+
+Projeto desenvolvido para fins de aprendizado e evolução profissional em desenvolvimento backend com PHP.
+
+📄 Licença
+
+Este projeto é de uso educacional.
+Livre para estudos e modificações.

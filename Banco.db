@@ -1,0 +1,65 @@
+http://localhost/phpmyadmin
+
+
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10,2) NOT NULL,
+    preco_promocional DECIMAL(10,2) DEFAULT 0.00,
+    imagem_capa VARCHAR(255),
+    ativo TINYINT(1) DEFAULT 1,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+INSERT INTO produtos 
+(nome, slug, descricao, preco, preco_promocional, imagem_capa, ativo)
+VALUES
+('Mouse Gamer RGB', 'mouse-gamer-rgb', 'Mouse gamer com 7 botões e LED RGB', 199.90, 149.90, 'mouse.jpg', 1),
+('Teclado Mecânico', 'teclado-mecanico', 'Teclado mecânico switch blue', 399.90, 0.00, 'teclado.jpg', 1),
+('Headset Gamer Pro', 'headset-gamer-pro', 'Headset com som surround 7.1', 299.90, 249.90, 'headset.jpg', 1);
+
+
+
+
+
+CREATE TABLE administradores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+INSERT INTO administradores (nome, email, senha)
+VALUES ('Admin', 'admin@gako.com', '123456');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
